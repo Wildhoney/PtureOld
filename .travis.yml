@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - '0.10'
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+cache:
+  directories:
+   - node_modules
+
+script:
+  - npm install
+  - bower install
+  - grunt test
+  - grunt build
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: K6JkPywGkgnFwf4slPezLuNm8vxInbcX0ClEJ9Sd6J991BNbvROLX62dVa0QzQRGt5eOXxX7SDyUzXZrYt/J5l4v8LYeRHEaCvxB2ZJN2DROjQvYsgRsx3naEtMck/0EgCv5xGSYHTUcyzVBiqcEeTeKbPlLVtdGFC0GRDnQTLU=
+  app: pture
+  on:
+    repo: Wildhoney/Pture
