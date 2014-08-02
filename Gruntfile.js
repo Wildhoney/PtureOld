@@ -114,7 +114,7 @@ module.exports = function(grunt) {
 
 //    grunt.registerTask('test', ['jshint', 'karma']);
     grunt.registerTask('test', ['jshint']);
-    grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'processhtml']);
+//    grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'processhtml']);
     grunt.registerTask('default', ['jshint', 'karma']);
 
 };
