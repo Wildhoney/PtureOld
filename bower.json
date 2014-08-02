@@ -1,0 +1,20 @@
+{
+  "name": "pture",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Wildhoney/Pture",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "description": "Source code for Pture.com",
+  "keywords": [
+    "pture"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
