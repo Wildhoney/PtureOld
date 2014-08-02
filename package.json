@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Wildhoney/Pture/issues"
   },
-  "homepage": "https://github.com/Wildhoney/Pture"
+  "homepage": "https://github.com/Wildhoney/Pture",
+  "dependencies": {
+    "express": "^4.7.2"
+  }
 }
