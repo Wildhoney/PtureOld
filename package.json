@@ -1,0 +1,22 @@
+{
+  "name": "pture",
+  "version": "0.1.0",
+  "description": "Source code for Pture.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wildhoney/Pture.git"
+  },
+  "keywords": [
+    "pture"
+  ],
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/Pture/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/Pture"
+}
