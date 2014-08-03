@@ -2,3 +2,5 @@
 /node_modules
 /public/js/vendor/*
 !/public/js/vendor/.gitkeep
+/public/dist/*
+!/public/dist/.gitkeep
