@@ -1,0 +1,5 @@
+beforeEach(function() {
+
+    module('ptureApp');
+
+});

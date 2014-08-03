@@ -53,17 +53,17 @@ module.exports = function(grunt) {
             }
         },
 
-//        /**
-//         * @property karma
-//         * @type {Object}
-//         */
-//        karma: {
-//            unit: {
-//                configFile: 'KarmaUnit.js',
-//                background: false,
-//                browsers: ['Firefox', 'PhantomJS']
-//            }
-//        },
+        /**
+         * @property karma
+         * @type {Object}
+         */
+        karma: {
+            unit: {
+                configFile: 'KarmaUnit.js',
+                background: false,
+                browsers: ['Firefox', 'PhantomJS']
+            }
+        },
 
         /**
          * @property processhtml
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-processhtml');
 
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('test', ['karma', 'jshint']);
     grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'processhtml']);
     grunt.registerTask('default', ['jshint', 'karma']);
 
