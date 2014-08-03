@@ -32,5 +32,10 @@
     "grunt-processhtml": "^0.3.3",
     "karma": "^0.12.19",
     "socket.io": "^1.0.6"
-  }
+  },
+  "vendor": [
+    "angular/angular.js",
+    "socket.io-client/socket.io.js",
+    "underscore/underscore.js"
+  ]
 }

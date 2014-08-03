@@ -19,6 +19,7 @@ script:
 
 deploy:
   provider: heroku
+  skip_cleanup: true
   api_key:
     secure: K6JkPywGkgnFwf4slPezLuNm8vxInbcX0ClEJ9Sd6J991BNbvROLX62dVa0QzQRGt5eOXxX7SDyUzXZrYt/J5l4v8LYeRHEaCvxB2ZJN2DROjQvYsgRsx3naEtMck/0EgCv5xGSYHTUcyzVBiqcEeTeKbPlLVtdGFC0GRDnQTLU=
   app: pture

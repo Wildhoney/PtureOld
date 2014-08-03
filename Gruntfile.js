@@ -1,5 +1,39 @@
 module.exports = function(grunt) {
 
+    /**
+     * @property appFiles
+     * @type {String[]}
+     */
+    var appFiles = ['public/js/Default.js', 'public/js/controllers/*.js', 'public/js/directives/*.js',
+                    'public/js/services/*.js', 'public/js/filters/*.js'];
+
+    /**
+     * Responsible for finding the third-party modules that need to be included as part of the build.
+     *
+     * @method getVendorFiles
+     * @return {Array}
+     *
+     */
+    var getVendorFiles = function getVendorFiles() {
+
+        /**
+         * @property pkg
+         * @type {Object}
+         */
+        var pkg = grunt.file.readJSON('package.json');
+
+        // Ensure the `vendor` property exists in the configuration document.
+        if (!pkg.hasOwnProperty('vendor')) {
+            return [];
+        }
+
+        // List of all `vendor` documents defined in "package.json".
+        return pkg.vendor.map(function map(file) {
+            return 'public/js/vendor/' + file
+        });
+
+    };
+
     grunt.initConfig({
 
         /**
@@ -30,78 +64,65 @@ module.exports = function(grunt) {
 //                browsers: ['Firefox', 'PhantomJS']
 //            }
 //        },
-//
-//        /**
-//         * @property processhtml
-//         * @type {Object}
-//         */
-//        processhtml: {
-//            dist: {
-//                files: {
-//                    'public/index.html': ['public/index.html']
-//                }
-//            }
-//        },
-//
-//        /**
-//         * @property concat
-//         * @type {Object}
-//         */
-//        concat: {
-//            javascript: {
-//                options: {
-//                    sourceMap: true,
-//                    sourceMapName: 'public/dist/<%= pkg.name %>.min.js.map'
-//                },
-//                src: getVendorFiles().concat(appFiles),
-//                dest: 'public/dist/<%= pkg.name %>.min.js'
-//            },
-//            stylesheets: {
-//                src: ['public/css/*.css', 'public/css/**/*.css'],
-//                dest: 'public/dist/<%= pkg.name %>.min.css'
-//            }
-//        },
-//
-//        /**
-//         * @property uglify
-//         * @type {Object}
-//         */
-//        uglify: {
-//            dist: {
-//                options: {
-//                    sourceMap: true,
-//                    sourceMapIn: 'public/dist/<%= pkg.name %>.min.js.map'
-//                },
-//                files: {
-//                    'public/dist/<%= pkg.name %>.min.js': 'public/dist/<%= pkg.name %>.min.js'
-//                }
-//            }
-//        },
-//
-//        /**
-//         * @property cssmin
-//         * @type {Object}
-//         */
-//        cssmin: {
-//            combine: {
-//                files: {
-//                    'public/dist/<%= pkg.name %>.min.css': ['public/dist/<%= pkg.name %>.min.css']
-//                }
-//            }
-//        },
-//        /**
-//         * @property watch
-//         * @type {Object}
-//         */
-//        watch: {
-//            images: {
-//                files: ['public/images/*.png'],
-//                tasks: ['sprite'],
-//                options: {
-//                    spawn: false
-//                }
-//            }
-//        }
+
+        /**
+         * @property processhtml
+         * @type {Object}
+         */
+        processhtml: {
+            dist: {
+                files: {
+                    'public/index.html': ['public/index.html']
+                }
+            }
+        },
+
+        /**
+         * @property concat
+         * @type {Object}
+         */
+        concat: {
+            javascript: {
+                options: {
+                    sourceMap: true,
+                    sourceMapName: 'public/dist/<%= pkg.name %>.min.js.map'
+                },
+                src: getVendorFiles().concat(appFiles),
+                dest: 'public/dist/<%= pkg.name %>.min.js'
+            },
+            stylesheets: {
+                src: ['public/css/*.css', 'public/css/**/*.css'],
+                dest: 'public/dist/<%= pkg.name %>.min.css'
+            }
+        },
+
+        /**
+         * @property uglify
+         * @type {Object}
+         */
+        uglify: {
+            dist: {
+                options: {
+                    sourceMap: true,
+                    sourceMapIn: 'public/dist/<%= pkg.name %>.min.js.map'
+                },
+                files: {
+                    'public/dist/<%= pkg.name %>.min.js': 'public/dist/<%= pkg.name %>.min.js'
+                }
+            }
+        },
+
+        /**
+         * @property cssmin
+         * @type {Object}
+         */
+        cssmin: {
+            combine: {
+                files: {
+                    'public/dist/<%= pkg.name %>.min.css': ['public/dist/<%= pkg.name %>.min.css']
+                }
+            }
+        }
 
     });
 
@@ -112,9 +133,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-processhtml');
 
-//    grunt.registerTask('test', ['jshint', 'karma']);
     grunt.registerTask('test', ['jshint']);
-//    grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'processhtml']);
+    grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'processhtml']);
     grunt.registerTask('default', ['jshint', 'karma']);
 
 };
